@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Train Schedule</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- LINK TO FIREBASE GOES HERE -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <h1 class="text-center">Train Schedule</h1>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-12 display-form">
+                <div class="card">
+                    <div class="card-header">
+                        All Members
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm table-hover" id='employee-table'>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Sign-Up Card-->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        Add Train
+                    </div>
+
+                    <div class="card-body">
+
+                        <!-- Sign-up Form (note the various input "types")-->
+                        <form role="form" id="input-form">
+                            <div class="form-group row">
+                                <label for="name-input">Train Name</label>
+                                <input class="form-control" id="name-input" type="text">
+                            </div>
+                            <div class="form-group row">
+                                <label for="destination-input">Destination</label>
+                                <input class="form-control" id="destination-input" type="text">
+                            </div>
+                            <div class="form-group row">
+                                <label for="time-input">First Train Time (HH:mm - Miliraty Time)</label>
+                                <input type="text" pattern="([01]?[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}"
+                                    required="required" name="time" class="form-control" id="timeinput">
+                                <!-- class="form-control" id="time-input" -->
+                            </div>
+                            <div class="form-group row">
+                                <label for="frequency-input">Frequency</label>
+                                <input class="form-control" id="frequency-input" type="number" min="0" pattern="\d+">
+                            </div>
+                            <button class="btn btn-default" id="add-entry" type="submit" disabled>Submit</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Most Recent Member Card -->
+            <!-- <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        Most Recent Member
+                    </div>
+                    <div class="card-body" id="recent-member">
+                        <h2 id="name-display"></h2>
+                        <h4 id="email-display"></h4>
+                        <h4 id="age-display"></h4>
+                        <p id="comment-display"></p>
+                    </div>
+                </div>
+
+            </div> -->
+
+            <!-- Wells for displaying all users -->
+
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- Script -->
+    <script src="assets/javascript/app.js">
+        // ========================================== START CODING BELOW!!
+
+        // Initialize Firebase
+
+
+    </script>
+</body>
+
+</html>
