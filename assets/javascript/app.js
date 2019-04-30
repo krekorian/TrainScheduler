@@ -26,10 +26,7 @@ $("#add-entry").on("click", function (event) {
     distination = $("#destination-input").val().trim();
     time = $("#timeinput").val();
     frequency = $("#frequency-input").val().trim();
-    console.log(name);
-    console.log(distination);
-    console.log(time);
-    console.log(frequency);
+
     // Code for the push
     dataRef.ref().push({
 
@@ -39,6 +36,8 @@ $("#add-entry").on("click", function (event) {
         frequency: frequency,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
+
+    // code to reset form data and disable submit button
     document.getElementById("input-form").reset();
     document.getElementById("add-entry").disabled = true;
 });
@@ -51,27 +50,22 @@ dataRef.ref().on("child_added", function (childSnapshot) {
     var entryDistination = childSnapshot.val().distination;
     var entryTime = childSnapshot.val().time;
     var entryFrequency = childSnapshot.val().frequency;
+
+    //decalare time variables and convert them into HH:mm
     var nextTrain;
     var now = moment.utc().toDate();
-    now2 = moment(now).add(entryFrequency, 'minutes').format("HH:mm");
-    now1 = moment(now).format("HH:mm");
-
-
+    var timeNow = moment(now).format("HH:mm");
     nextTrain = moment(entryTime, "HH:mm");
-    console.log(nextTrain);
-    var now3 = nextTrain.add(entryFrequency, 'minutes');
-    // var now3 = moment(entryTime2).add(entryFrequency, 'mm');
-
-
     var fEntryTime = moment(entryTime, "HH:mm").format("HH:mm");
-    console.log(fEntryTime);
-    while (fEntryTime < now1) {
+
+    //calculate next train time
+    while (fEntryTime < timeNow) {
         nextTrain = nextTrain.add(entryFrequency, 'minutes');
         fEntryTime = moment(nextTrain, "HH:mm").format("HH:mm");
     }
 
     //calcaulte the time in minutes until the next train
-    var mins = moment(moment(fEntryTime, "HH:mm").diff(moment(now1, "HH:mm"))).format("mm");
+    var mins = moment(moment(fEntryTime, "HH:mm").diff(moment(timeNow, "HH:mm"))).format("mm");
 
     // Create the new row
     var newRow = $("<tr>").append(
